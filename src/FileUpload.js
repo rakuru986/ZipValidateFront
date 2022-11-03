@@ -1,8 +1,8 @@
-import React, { useState, show } from "react";
+import React, { useState} from "react";
 import axios from "axios";
 
 import { CardContent, Card, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+
 import Center from "./Center";
 
 export const FileUpload = () => {
@@ -10,7 +10,7 @@ export const FileUpload = () => {
   const [fileName, setFileName] = useState();
   const [show, toggleShow] = useState(true);
 
-  
+
 
 
 
@@ -32,13 +32,17 @@ export const FileUpload = () => {
         "https://localhost:7218/api/file",
         formData,
       );
-      alert("File validated");
-      toggleShow(true);
+      alert(res.data);
+
+      if(res.data === "zip validated"){
+        toggleShow(true);
+      }
+      
+      
       
 
-      console.log(res);
     } catch (ex) {
-      console.log(ex);
+      alert("please change file");
     }
   };
 
@@ -56,7 +60,7 @@ export const FileUpload = () => {
         "https://localhost:7218/api/savefile",
         formData,
       );
-      alert("zip saved");
+      alert(res.data);
       
 
       console.log(res);
@@ -69,7 +73,7 @@ export const FileUpload = () => {
   const deleteFiles = async (e) => {
     try {
       const res = await axios.post("https://localhost:7218/api/deletefiles");
-      alert("file deleted");
+      alert(res.data);
 
       console.log(res);
     } catch (ex) {
