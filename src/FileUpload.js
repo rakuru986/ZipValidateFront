@@ -10,8 +10,6 @@ export const FileUpload = () => {
   const [fileName, setFileName] = useState();
   const [show, toggleShow] = useState(true);
 
- 
-
 
 
   const saveFile = (e) => {
